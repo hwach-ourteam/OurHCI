@@ -1,0 +1,33 @@
+{% extends "ourapp/layout.html" %}
+
+{% block body %}
+    <div class="needspad">    
+        <h2>Login</h2>
+
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+    
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username">
+              </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">🔑</span>
+                </div>
+                <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="password">
+              </div>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+    
+        Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+    </div>
+
+
+{% endblock %}
